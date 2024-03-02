@@ -1,7 +1,7 @@
 package services
 
 import (
-	"time"
+	
 
 	"github.com/lai0xn/hackiwna-backend/internal/models"
 	"github.com/lai0xn/hackiwna-backend/internal/storage"
@@ -12,7 +12,7 @@ import (
 type RecordService struct{}
 
 // CreateRecord creates a new record with optional file upload
-func (s *RecordService) CreateRecord(req types.RecordPyload) (*models.Record, error) {
+func (s *RecordService) CreateRecord(req types.RecordPayload) (*models.Record, error) {
 	record := &models.Record{
 		Title:     req.Title,
 		Summary:   req.Summary,
@@ -39,7 +39,7 @@ func (s *RecordService) GetRecordByID(id uuid.UUID) (*models.Record, error) {
 }
 
 // UpdateRecord updates an existing record
-func (s *RecordService) UpdateRecord(id uuid.UUID, req types.RecordPyload) error {
+func (s *RecordService) UpdateRecord(id uuid.UUID, req types.RecordPayload) error {
 	var record models.Record
 	if err := storage.DB.Where("id = ?", id).First(&record).Error; err != nil {
 		return err
