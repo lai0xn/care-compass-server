@@ -1,0 +1,11 @@
+to run the project 
+1 - make sure go(sdk) is installed in your machine
+2- make sure you have a postgresql db initialized (you can change the code to use something else)
+2 - clone the repository
+3 - cd care-compass-server
+4 - go mod tidy
+to run the app :
+go run cmd/app/main.go
+
+to build the app :
+go build cmd/app
