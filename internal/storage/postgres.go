@@ -1,10 +1,10 @@
 package storage
 
 import (
-	"log"
+    "log"
 
-	"gorm.io/driver/sqlite"
-	"gorm.io/gorm"
+    "gorm.io/driver/postgres"
+    "gorm.io/gorm"
 )
 
 var DB *gorm.DB
@@ -13,10 +13,10 @@ func loadDBURI() {
 }
 
 func Connect() {
-	db, err := gorm.Open(sqlite.Open("database.db"), &gorm.Config{})
-	if err != nil {
-		panic(err)
-	}
-	log.Println("Database Connected")
-	DB = db
+    db, err := gorm.Open(postgres.Open("host=localhost user=postgres password=agoudjil dbname=api port=5017 sslmode=disable TimeZone=Asia/Shanghai"), &gorm.Config{})
+    if err != nil {
+        panic(err)
+    }
+    log.Println("Database Connected")
+    DB = db
 }
